@@ -59,7 +59,8 @@ Many users encounter configuration errors when setting up DeepSeek. Here's a com
    .. code-block:: Properties
 
       # CHAT MODEL: Using DeepSeek Official API
-      CHAT_MODEL=deepseek/deepseek-chat 
+      CHAT_MODEL=deepseek/deepseek-chat
+      OPENAI_API_KEY=<replace_with_your_deepseek_api_key>
       DEEPSEEK_API_KEY=<replace_with_your_deepseek_api_key>
 
       # EMBEDDING MODEL: Using SiliconFlow for embedding since DeepSeek has no embedding model.
@@ -68,7 +69,10 @@ Many users encounter configuration errors when setting up DeepSeek. Here's a com
       LITELLM_PROXY_API_KEY=<replace_with_your_siliconflow_api_key>
       LITELLM_PROXY_API_BASE=https://api.siliconflow.cn/v1
 
-Necessary parameters include:
+   .. note::
+      When using the DeepSeek API you must also set ``OPENAI_API_KEY`` to the same value as ``DEEPSEEK_API_KEY``.
+
+   Necessary parameters include:
 
 - `CHAT_MODEL`: The model name of the chat model.
 
@@ -93,11 +97,12 @@ Additionally, you need to set up the the additional parameters for the respectiv
 
 For example, if you are using a DeepSeek model, you need to set as follows:
 
-   .. code-block:: Properties
+    .. code-block:: Properties
 
-      # For some models LiteLLM requires a prefix to the model name.
-      CHAT_MODEL=deepseek/deepseek-chat
-      DEEPSEEK_API_KEY=<replace_with_your_deepseek_api_key>
+       # For some models LiteLLM requires a prefix to the model name.
+       CHAT_MODEL=deepseek/deepseek-chat
+       OPENAI_API_KEY=<replace_with_your_deepseek_api_key>
+       DEEPSEEK_API_KEY=<replace_with_your_deepseek_api_key>
 
 Besides, when you are using reasoning models, the response might include the thought process. For this case, you need to set the following environment variable:
    
@@ -185,6 +190,8 @@ Configuration List
 | Configuration Option              | Meaning                                                         | Default Value           |
 +===================================+=================================================================+=========================+
 | OPENAI_API_KEY                    | API key for both chat and embedding models                      | None                    |
++-----------------------------------+-------------------------------------------+----------------------+-------------------------+
+| DEEPSEEK_API_KEY                  | API key for DeepSeek (also set ``OPENAI_API_KEY`` when using DeepSeek) | None                    |
 +-----------------------------------+-----------------------------------------------------------------+-------------------------+
 | EMBEDDING_OPENAI_API_KEY          | Use a different API key for embedding model                     | None                    |
 +-----------------------------------+-----------------------------------------------------------------+-------------------------+

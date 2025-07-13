@@ -199,13 +199,15 @@ More details can be found in the [development setup](https://rdagent.readthedocs
   LITELLM_PROXY_API_BASE=https://api.siliconflow.cn/v1
   ```
 
+
   **Configuration Example: DeepSeek Setup**:
 
   >Since many users encounter configuration errors when setting up DeepSeek. Here's a complete working example for DeepSeek Setup:
   ```bash
   cat << EOF  > .env
   # CHAT MODEL: Using DeepSeek Official API
-  CHAT_MODEL=deepseek/deepseek-chat 
+  CHAT_MODEL=deepseek/deepseek-chat
+  OPENAI_API_KEY=<replace_with_your_deepseek_api_key>
   DEEPSEEK_API_KEY=<replace_with_your_deepseek_api_key>
 
   # EMBEDDING MODEL: Using SiliconFlow for embedding since deepseek has no embedding model.
@@ -214,6 +216,7 @@ More details can be found in the [development setup](https://rdagent.readthedocs
   LITELLM_PROXY_API_KEY=<replace_with_your_siliconflow_api_key>
   LITELLM_PROXY_API_BASE=https://api.siliconflow.cn/v1
   ```
+  > When using DeepSeek's API, set `OPENAI_API_KEY` to the same value as `DEEPSEEK_API_KEY`.
 
   Notice: If you are using reasoning models that include thought processes in their responses (such as \<think> tags), you need to set the following environment variable:
   ```bash
